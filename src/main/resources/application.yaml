@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: Weather Microservice
+  main:
+    allow-bean-definition-overriding: true
+    banner-mode: "off"
+    lazy-initialization: true
+
+server:
+  port: 8082
+  servlet:
+    context-path: /weather
+
+management:
+  server:
+    port: 8082
+    ssl.enabled: false
+
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: true
+  cache:
+    disabled: true
+
+provider:
+  openmeteo:
+    endpoint:
+      v1: https://archive-api.open-meteo.com/v1
+    forecast:
+      v1: https://api.open-meteo.com/v1
