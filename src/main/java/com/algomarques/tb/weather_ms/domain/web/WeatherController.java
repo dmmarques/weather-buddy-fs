@@ -22,7 +22,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/weather")
 @RequiredArgsConstructor
 @Slf4j
 public class WeatherController {
