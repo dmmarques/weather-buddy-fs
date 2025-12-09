@@ -32,7 +32,7 @@ class WeatherControllerTest {
         WeatherResponse weatherResponse = WeatherResponse.init().build();
         Mockito.when(weatherService.checkWeatherStatus(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.anyList())).thenReturn(weatherResponse);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check")
+        mockMvc.perform(MockMvcRequestBuilders.get("/check")
                                               .param("latitude", "0.2")
                                               .param("longitude", "0.3")
                                               .param("dates", "1996-04-16"))
@@ -45,7 +45,7 @@ class WeatherControllerTest {
         WeatherResponse weatherResponse = WeatherResponse.init().build();
         Mockito.when(weatherService.checkWeatherStatus(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.anyList())).thenReturn(weatherResponse);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check")
+        mockMvc.perform(MockMvcRequestBuilders.get("/check")
                                               .param("longitude", "0.3")
                                               .param("dates", "1996-04-16"))
                .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -57,7 +57,7 @@ class WeatherControllerTest {
         WeatherResponse weatherResponse = WeatherResponse.init().build();
         Mockito.when(weatherService.checkWeatherStatus(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.anyList())).thenReturn(weatherResponse);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check")
+        mockMvc.perform(MockMvcRequestBuilders.get("/check")
                                               .param("latitude", "0.3")
                                               .param("dates", "1996-04-16"))
                .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -69,7 +69,7 @@ class WeatherControllerTest {
         WeatherResponse weatherResponse = WeatherResponse.init().build();
         Mockito.when(weatherService.checkWeatherStatus(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.anyList())).thenReturn(weatherResponse);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check")
+        mockMvc.perform(MockMvcRequestBuilders.get("/check")
                                               .param("latitude", "0.2")
                                               .param("longitude", "0.3"))
                .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -81,14 +81,14 @@ class WeatherControllerTest {
         WeatherResponse weatherResponse = WeatherResponse.init().build();
         Mockito.when(weatherService.checkWeatherStatus(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.anyList())).thenReturn(weatherResponse);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/check"))
                .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
     @DisplayName("when controlled is called in an unknown endpoint, should return 404")
     void test6() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check/nonexistent"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/check/nonexistent"))
                .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
@@ -99,7 +99,7 @@ class WeatherControllerTest {
                .when(weatherService)
                .checkWeatherStatus(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.anyList());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/weather/check")
+        mockMvc.perform(MockMvcRequestBuilders.get("/check")
                                               .param("latitude", "0.2")
                                               .param("longitude", "0.3")
                                               .param("dates", "1996-04-16"))
